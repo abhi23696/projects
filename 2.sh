@@ -1,8 +1,16 @@
-printf "Write the file extension you want to search for: "
-read ext
+echo -n "Enter file name : "
+read file
 
-printf "Searching for files with extension '%s'\n" "$ext"
+# find out if file has write permission or not
+[ -w $file ] && W="Write = yes" || W="Write = No"
 
-for file in *"$ext"; do
-    printf "File: %s\n" "$file"
-done
+# find out if file has excute permission or not
+[ -x $file ] && X="Execute = yes" || X="Execute = No"
+
+# find out if file has read permission or not
+[ -r $file ] && R="Read = yes" || R="Read = No"
+
+echo "$file permissions"
+echo "$W"
+echo "$R"
+echo "$X"
